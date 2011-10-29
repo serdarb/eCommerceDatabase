@@ -17,7 +17,6 @@
     [DiscountPercent]             INT             NULL,
     [CommissionPercent]           INT             NULL,
     [TaxPercent]                  DECIMAL (18)    NULL,
-    [Barcode]                     VARCHAR (50)    NULL,
     [StockFromSupplier]           INT             NULL,
     [StockQuantity]               INT             NULL,
     [StockWarningLevel]           INT             NULL,
