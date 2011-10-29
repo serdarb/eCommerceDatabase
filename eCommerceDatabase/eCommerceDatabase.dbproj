@@ -30,8 +30,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>.\sql\release\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
-    <TargetConnectionString>
-    </TargetConnectionString>
+    <TargetConnectionString>Data Source=.;Integrated Security=True;Pooling=False</TargetConnectionString>
     <TargetDatabase>
     </TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
@@ -39,21 +38,21 @@
     </SuppressWarnings>
     <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
     <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
-    <DeployToDatabase>False</DeployToDatabase>
+    <DeployToDatabase>True</DeployToDatabase>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>.\sql\debug\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
-    <TargetConnectionString>
-    </TargetConnectionString>
-    <TargetDatabase>
-    </TargetDatabase>
+    <TargetConnectionString>Data Source=.;Integrated Security=True;Pooling=False</TargetConnectionString>
+    <TargetDatabase>xCommerce</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>
     </SuppressWarnings>
     <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
     <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
-    <DeployToDatabase>False</DeployToDatabase>
+    <DeployToDatabase>True</DeployToDatabase>
+    <DeployScriptFileName>xCommerceDatabase.sql</DeployScriptFileName>
+    <DBSchemaFileName>xCommerceDatabase</DBSchemaFileName>
   </PropertyGroup>
   <!--Import the settings-->
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\TeamData\Microsoft.Data.Schema.SqlTasks.targets" />
@@ -67,60 +66,14 @@
     <Folder Include="Schema Objects\" />
     <Folder Include="Schema Objects\Schemas\" />
     <Folder Include="Schema Objects\Schemas\dbo\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Programmability\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Defaults\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Functions\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Rules\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types\User Defined Data Types\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types\User Defined Types CLR\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types\User Defined Table Types\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types\XML Schema Collections\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Service Broker\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Service Broker\Queues\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Synonyms\" />
     <Folder Include="Schema Objects\Schemas\dbo\Tables\" />
     <Folder Include="Schema Objects\Schemas\dbo\Tables\Constraints\" />
     <Folder Include="Schema Objects\Schemas\dbo\Tables\Indexes\" />
     <Folder Include="Schema Objects\Schemas\dbo\Tables\Keys\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Tables\Triggers\" />
     <Folder Include="Schema Objects\Schemas\dbo\Tables\Statistics\" />
     <Folder Include="Schema Objects\Schemas\dbo\Views\" />
     <Folder Include="Schema Objects\Schemas\dbo\Views\Indexes\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Views\Triggers\" />
     <Folder Include="Schema Objects\Schemas\dbo\Views\Statistics\" />
-    <Folder Include="Schema Objects\Database Level Objects\" />
-    <Folder Include="Schema Objects\Database Level Objects\Assemblies\" />
-    <Folder Include="Schema Objects\Database Level Objects\Database Triggers\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Schemas\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Users\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Certificates\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Asymmetric Keys\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Master Keys\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Signatures\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Symmetric Keys\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Database Encryption Keys\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Database Audit Specification\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Roles\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Roles\Application Roles\" />
-    <Folder Include="Schema Objects\Database Level Objects\Security\Roles\Database Roles\" />
-    <Folder Include="Schema Objects\Database Level Objects\Service Broker\" />
-    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Broker Priorities\" />
-    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Contracts\" />
-    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Event Notifications\" />
-    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Message Types\" />
-    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Remote Service Binding\" />
-    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Routes\" />
-    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Services\" />
-    <Folder Include="Schema Objects\Database Level Objects\Storage\" />
-    <Folder Include="Schema Objects\Database Level Objects\Storage\Full Text Stoplists\" />
-    <Folder Include="Schema Objects\Database Level Objects\Storage\Filegroups\" />
-    <Folder Include="Schema Objects\Database Level Objects\Storage\Files\" />
-    <Folder Include="Schema Objects\Database Level Objects\Storage\Full Text Catalogs\" />
-    <Folder Include="Schema Objects\Database Level Objects\Storage\Partition Functions\" />
-    <Folder Include="Schema Objects\Database Level Objects\Storage\Partition Schemes\" />
   </ItemGroup>
   <ItemGroup>
     <PropertiesFile Include="Properties\Database.sqlsettings">
@@ -143,12 +96,6 @@
     <BuildContributorArgument Include="OutDir=$(OutDir)" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Schema Objects\Database Level Objects\Storage\Files\UsersAndAddresses_log.sqlfile.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Database Level Objects\Storage\Files\UsersAndAddresses.sqlfile.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_Counties_Cities.fkey.sql">
       <SubType>Code</SubType>
     </Build>
@@ -191,21 +138,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ProductOptionGroupMembers_ProductOptionGroups.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ProductOptionPrices_ProductOptionGroupMembers.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ProductOptionPrices_ProductOptionGroupMembers1.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ProductOptionPrices_ProductOptionGroupMembers2.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ProductOptionPrices_ProductOptionGroupMembers3.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ProductOptionPrices_Products.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ProductOptions_ProductOptionGroupMembers.fkey.sql">
       <SubType>Code</SubType>
     </Build>
@@ -228,9 +160,6 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ProductPriceHistories_Products.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ProductPriceHistories_ProductOptionPrices.fkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_Affilates_Customers.fkey.sql">
@@ -342,9 +271,6 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_ProductOptionGroups.pkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_ProductOptionPrices.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_ProductOptions.pkey.sql">
@@ -494,7 +420,7 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\ProductOptionGroups.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\ProductOptionPrices.table.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\ProductOptionCombinations.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\ProductOptions.table.sql">
@@ -590,7 +516,7 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\OrderStatuses.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Database Level Objects\Service Broker\Routes\AutoCreatedLocal.route.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\StockUnits.table.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>

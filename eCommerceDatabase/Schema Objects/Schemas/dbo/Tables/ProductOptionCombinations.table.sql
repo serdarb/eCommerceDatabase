@@ -1,0 +1,22 @@
+﻿CREATE TABLE [dbo].[ProductOptionCombinations] (
+    [ProductOptionCombinationId]	INT					NOT NULL,
+    [ProductId]						INT					NULL,
+    [ProductOptionGroupMemberId1]	INT					NULL,
+    [ProductOptionGroupMemberId2]	INT					NULL,
+    [ProductOptionGroupMemberId3]	INT					NULL,
+    [ProductOptionGroupMemberId4]	INT					NULL,
+	[ProductOptionGroupMemberId5]	INT					NULL,
+	[Barcode]						VARCHAR (50)		NULL,
+	[Price]							DECIMAL (18, 2)		NULL,
+	[PriceMarket]					DECIMAL (18, 2)		NULL,
+    [PriceSupplier]					DECIMAL (18, 2)		NULL,
+	[CampaignStock]					DECIMAL (18, 2)		NULL,
+	[ActualStock]					DECIMAL (18, 2)		NULL,
+	[StockWarningLevel]				DECIMAL (18, 2)		NULL,
+	[StockUnitId]					INT					NULL,
+    [Comment]						VARCHAR (MAX)		NULL,
+    [UpdatedBy]						INT					NULL,
+    [CreatedOn]						DATETIME			NULL,
+    [UpdatedOn]						DATETIME			NULL,
+    [DeletedOn]						DATETIME			NULL
+);
